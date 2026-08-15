@@ -1,0 +1,26 @@
+def product_except_self(nums):
+    result = [1] * len(nums)
+
+    # Prefix product
+    prefix = 1
+    for i in range(len(nums)):
+        result[i] = prefix
+        prefix *= nums[i]
+
+    # Suffix product
+    suffix = 1
+    for i in range(len(nums) - 1, -1, -1):
+        result[i] *= suffix
+        suffix *= nums[i]
+
+    return result
+
+
+# Get input from user
+nums = list(map(int, input("Enter numbers: ").split()))
+
+# Call function
+answer = product_except_self(nums)
+
+# Display result
+print("Output:", answer)
